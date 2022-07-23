@@ -29,14 +29,18 @@ if (!process.env.ENCODER_STREAM || process.env.ENCODER_STREAM === null) {
     process.exit(1);
 }
 
-video = process.env.STREAM_VIDEO_SOURCE;
+if (!process.env.MEDIA_SRC_DEST || process.env.MEDIA_SRC_DEST === null) {
+    console.info('Please, set the MEDIA_SRC_DEST variable in the environment variables');
+    process.exit(1);
+}
+
+video = process.env.MEDIA_SRC_DEST.split(', ');
 rtmp = process.env.RTMP_DEST_KEY;
 fps = (process.env.FPS_STREAM ? process.env.FPS_STREAM : 30);
 encoder = process.env.ENCODER_STREAM;
 bitrate = process.env.BITRATE_STREAM ? process.env.BITRATE_STREAM : 1000;
-let fetchVideoList = (video.includes(', ') ? video.split(', ') : video);
-if (fetchVideoList.length > 1 && process.env.INFINITY_LOOP === 'true') {
-    console.info('Please, if you want to use the infinity loop, you must set the STREAM_VIDEO_SOURCE variable only with one video');
+if (video.length > 1 && process.env.INFINITY_LOOP === 'true') {
+    console.info('Please, if you want to use the infinity loop, you must set the MEDIA_SRC_DEST variable only with one video');
     process.exit(1);
 }
 
@@ -87,7 +91,7 @@ if (process.env.INFINITY_LOOP === 'true') {
 }
 
 // Push build multi source command and flatten the array.
-args_ffmpeg.push(buildMultiSourceCommand(fetchVideoList).flat());
+args_ffmpeg.push(buildMultiSourceCommand(video).flat());
 
 // Push other arguments and rtmp destination.
 args_ffmpeg.push('-vcodec', 'libx264', '-refs', '0', '-f', 'flv', '-flvflags', 'no_duration_filesize', '-r', fps, '-pix_fmt', 'yuv420p', '-c:v', encoder, '-b:v', bitrate + 'k', '-crf', '28', '-g', '60', '-c:a', 'aac', rtmp);
