@@ -4,8 +4,6 @@
 
 This project supports any device and Heroku too, it can be used to test live streaming and check streaming provider connection if you have plans for 24/7 live.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sandyh90/self-rtmp-service-stream)
-
 # Manual
 
 ## .env Example
@@ -22,3 +20,8 @@ BITRATE_STREAM=1500
 MEDIA_SRC_DEST=""
 ADDITIONAL_ARGS=""
 ```
+
+# Heroku & Other Saas
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sandyh90/self-rtm-service-stream)
+
+_Note: Use this at your own risk your account may be banned or suspended if you abuse their service due to their terms of service._
