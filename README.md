@@ -21,6 +21,10 @@ MEDIA_SRC_DEST=""
 ADDITIONAL_ARGS=""
 ```
 
+## Running command
+If you wanna run this file on your server or computer, Please use this command.
+`node start` or `node app.js`
+
 # Heroku & Other Saas
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/sandyh90/self-rtm-service-stream)
 
