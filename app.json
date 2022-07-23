@@ -1,0 +1,61 @@
+{
+    "name": "RTMP Service Stream",
+    "env": {
+        "RTMP_DEST_KEY": {
+            "description": "RTMP url to publish to destination",
+            "required": true
+        },
+        "MEDIA_SRC_DEST": {
+            "description": "Media source of video content, you can seperate multiple sources with comma (,)",
+            "required": true
+        },
+        "TYPE_RESOLUTION_STREAM": {
+            "description": "Type Screen resolution size of video stream (available: FIXED_RESOLUTION, CUSTOM_RESOLUTION)",
+            "required": true
+        },
+        "FPS_STREAM": {
+            "description": "fps of video stream (e.g. 24, 30, 50, 60) Default: 30",
+            "value": "30",
+            "required": true
+        },
+        "RESOLUTION_STREAM": {
+            "description": "Screen resolution size of video stream (e.g. 1280x720) Default is 1920x1080",
+            "value": "1920x1080",
+            "required": true
+        },
+        "ENCODER_STREAM": {
+            "description": "encoder of video stream (e.g. libx264, h264_nvenc, h264_qsv, h264_amf, h264_vaapi) Default: libx264",
+            "value": "libx264",
+            "required": true
+        },
+        "BITRATE_STREAM": {
+            "description": "bitrate of video stream (e.g. 1000, 2000, 3000, 4000, 5000) Default: 1000",
+            "value": 1000,
+            "required": true
+        },
+        "INFINITY_LOOP": {
+            "description": "This option will loop the video infinitely. Default: false",
+            "value": false,
+            "required": true
+        },
+        "SHOW_VERBOSE": {
+            "description": "This option will show verbose log. Default: false",
+            "value": false,
+            "required": true
+        }
+    },
+    "formation": {
+        "app": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        },
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        }
+    ]
+}

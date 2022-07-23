@@ -1,0 +1,21 @@
+{
+  "name": "self-rtmp-service-stream",
+  "version": "1.0.0",
+  "description": "Self stream ffmpeg to rtmp server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rtmp",
+    "stream",
+    "ffmpeg",
+    "streaming"
+  ],
+  "author": "Sandy Hermansyah",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}
