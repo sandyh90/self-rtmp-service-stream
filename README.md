@@ -1,6 +1,6 @@
 <h1 align="center">Self Broadcast Streaming</p>
 
-<h3 align="center">Easy Broadcast video and media to RTMP or else.</h3>
+<h3 align="center">Easy way for broadcast video and media to RTMP or else.</h3>
 
 This project supports any device and Heroku too, it can be used to test live streaming and check streaming provider connection if you have plans for 24/7 live.
 
