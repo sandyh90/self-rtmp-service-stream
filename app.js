@@ -34,6 +34,11 @@ if (!process.env.MEDIA_SRC_DEST || process.env.MEDIA_SRC_DEST === null) {
     process.exit(1);
 }
 
+let additional_args = [];
+if (process.env.ADDITIONAL_ARGS || process.env.ADDITIONAL_ARGS !== null) {
+    additional_args.push(process.env.ADDITIONAL_ARGS.split(' '));
+}
+
 video = process.env.MEDIA_SRC_DEST.split(', ');
 rtmp = process.env.RTMP_DEST_KEY;
 fps = (process.env.FPS_STREAM ? process.env.FPS_STREAM : 30);
@@ -94,7 +99,7 @@ if (process.env.INFINITY_LOOP === 'true') {
 args_ffmpeg.push(buildMultiSourceCommand(video).flat());
 
 // Push other arguments and rtmp destination.
-args_ffmpeg.push('-vcodec', 'libx264', '-refs', '0', '-f', 'flv', '-flvflags', 'no_duration_filesize', '-r', fps, '-pix_fmt', 'yuv420p', '-c:v', encoder, '-b:v', bitrate + 'k', '-crf', '28', '-g', '60', '-c:a', 'aac', rtmp);
+args_ffmpeg.push('-vcodec', 'libx264', '-refs', '0', '-f', 'flv', '-flvflags', 'no_duration_filesize', '-r', fps, '-pix_fmt', 'yuv420p', additional_args.flat(), '-c:v', encoder, '-b:v', bitrate + 'k', '-crf', '28', '-g', '60', '-c:a', 'aac', rtmp);
 
 console.log('Starting stream...');
 console.log('FFMPEG command: ffmpeg ' + args_ffmpeg);
