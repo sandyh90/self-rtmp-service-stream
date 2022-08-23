@@ -1,6 +1,6 @@
 <h1 align="center">Self Broadcast Streaming</p>
 
-<h3 align="center">Easy way for broadcast video and media to RTMP or else.</h3>
+<h3 align="center">Easy way for broadcast video and media to RTMP service.</h3>
 
 # Introduction
 
